@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lunch-Me</title>
+  </head>
+  <body>
+    <button id='burger'>Burger</button>
+    <button id='sushi'>Sushi</button>
+
+    <section id='results'></section>
+    <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script>
+      $(document).ready(function(){
+        var url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=51.523102,-0.087393&radius=1000'
+
+        $('#burger').on('click',function(){
+          url += '&query=burger'
+
+
+          $.get(url, function(data){
+            var results = data.response.groups[0].items;
+            console.log(results);
+            results.forEach(function(element, index, _){
+              $("<article>"+element.venue.name+' '+element.venue.price.message+' '+element.venue.rating+' '+element.venue.location.formattedAddress[0]+' '+element.venue.location.formattedAddress[3]+' '+"</article>").appendTo('#results')
+            });
+
+          });
+
+        });
+
+        $('#sushi').on('click',function(){
+          url += '&query=sushi'
+
+
+          $.get(url, function(data){
+            var results = data.response.groups[0].items;
+            console.log(results);
+            results.forEach(function(element, index, _){
+              $("<article>"+element.venue.name+' '+element.venue.price.message+' '+element.venue.rating+' '+element.venue.location.formattedAddress[0]+' '+element.venue.location.formattedAddress[3]+' '+"</article>").appendTo('#results')
+            });
+
+          });
+
+        });
+
+
+
+      });
+    </script>
+  </body>
+</html>
