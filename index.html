@@ -29,7 +29,8 @@
 // we collect data via this URI
 
         $('button').on('click',function(){
-          var url = base_url + '&query=' + $(this).data('option');
+          var option = $(this).data('option');
+          var url = base_url + '&query=' + option;
 
 //Adds an extra search function onto the end of the API
 
@@ -39,8 +40,8 @@
             results = results.sort(function(a,b){
               return b.venue.rating - a.venue.rating;
             })
+            $('body').css('background-image',"url('public/images/"+option+".jpg')");
             $('#results').html('');
-            console.log('hello!');
 
             results.forEach(function(element, _, _){
 
@@ -49,7 +50,7 @@
 
 // take each of the elements attributes listed and display in the results section
               if(venue.price && venue.rating) {
-                $("<article>"+ "<h1>"+venue.name+ "</h1>"+' '+ "<p id='rating'>"+venue.rating+'</p>'+"<h4>"+"Cost: "+venue.price.message+"</h4>"+"<p>"+' '+"<p>"+ venue.location.distance+" " + "meters away"+"</p>"+venue.location.formattedAddress[0]+' - '+ venue.location.formattedAddress[3]+"</p>"+"<img >"+"</article>").appendTo('#results').sort('#rating');
+                $("<article>"+ "<h1>"+venue.name+ "</h1>"+' '+ "<p id='rating'>"+venue.rating+'</p>'+"<h4>"+"Cost: "+venue.price.message+"</h4>"+"<p>"+' '+"<p>"+ venue.location.distance+" " + "meters away"+"</p>"+venue.location.formattedAddress[0]+' - '+ venue.location.formattedAddress[3]+"</p>"+"<img >"+"</article>").appendTo('#results');
               }
             });
 

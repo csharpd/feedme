@@ -25,6 +25,9 @@ article {
   box-shadow: 0 0 5px rgba(0,0,0,0.4);
   padding: 10px;
    border-radius: 7px;
+   width: 80%;
+   margin-right: auto;
+   margin-left: auto;
 }
 
 h1 {
@@ -35,3 +38,4 @@ h1 {
   float: right;
   margin-top: -19px;
 }
+
