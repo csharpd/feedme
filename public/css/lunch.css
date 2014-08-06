@@ -1,0 +1,36 @@
+body {
+   font-family: 'Raleway', sans-serif;
+}
+
+.button {
+  display: inline-block;
+  width: 110px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #5F9F9F;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-shadow: 0 0 2px rgba(0,0,0, 0.4);
+}
+
+article {
+    background-color: white;
+  margin: 40px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  padding: 10px;
+   border-radius: 7px;
+}
+
+h1 {
+   font-size: 25px;
+}
+
+p {
+  position:
+}
