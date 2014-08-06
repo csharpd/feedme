@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Lunch-Me</title>
-    <link rel="stylesheet" type="text/css" href="public/css/reset.css">
-     <link href='public/css/lunch.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+     <link href='/css/lunch.css' rel='stylesheet'>
       <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
   <body>
@@ -42,7 +42,7 @@
             results = results.sort(function(a,b){
               return b.venue.rating - a.venue.rating;
             })
-            $('html').css('background-image',"url('public/images/"+option+".jpg')");
+            $('html').css('background-image',"url('/images/"+option+".jpg')");
             $('#results').html('');
 
             results.forEach(function(element, _, _){
