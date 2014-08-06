@@ -7,16 +7,18 @@
       <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <button class="button" data-option='burgers'>Burgers</button>
-    <button class="button" data-option='sushi'>Sushi</button>
-    <button class="button" data-option='beer'>Beer</button>
-    <button class="button" data-option='noodles'>Noodles</button>
-    <button class="button" data-option='doughnuts'>Doughnuts</button>
+    <header>
+      <h1 id="main">Hungry Old Street?</h1>
+      <button class="button" data-option='burgers'>Burgers</button>
+      <button class="button" data-option='sushi'>Sushi</button>
+      <button class="button" data-option='beer'>Beer</button>
+      <button class="button" data-option='noodles'>Noodles</button>
+      <button class="button" data-option='doughnuts'>Doughnuts</button>
 
-    <button class="button" data-option='coffee'>Coffee</button>
+      <button class="button" data-option='coffee'>Coffee</button>
 
-     <button class="button" data-option='cake'>Cake</button>
-
+       <button class="button" data-option='cake'>Cake</button>
+  </header>
     <section id='results'> </section>
 
 
@@ -40,7 +42,7 @@
             results = results.sort(function(a,b){
               return b.venue.rating - a.venue.rating;
             })
-            $('body').css('background-image',"url('public/images/"+option+".jpg')");
+            $('html').css('background-image',"url('public/images/"+option+".jpg')");
             $('#results').html('');
 
             results.forEach(function(element, _, _){
