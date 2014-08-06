@@ -7,67 +7,55 @@
       <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <button class="button" id='burger'>Burger</button>
-    <button class="button" id='sushi'>Sushi</button>
-    <button class="button" id='dougnuts'>Dougnuts</button>
-    <button class="button" id='steak'>Steak</button>
-    <button class="button" id='mexicano'>Mexicano</button>
-    <button class="button" id='noodles'>Noodles</button>
-     <button class="button" id='cake'>Cake</button>
-<!--     <h1>2.Sort results </h1>
-    <button class="button" id='rating'>By Rating</button>
-    <button class="button" id='rating'>By Cost</button> -->
-    <section id='results'>
-    </section>
+    <button class="button" data-option='burgers'>Burgers</button>
+    <button class="button" data-option='sushi'>Sushi</button>
+    <button class="button" data-option='beer'>Beer</button>
+    <button class="button" data-option='noodles'>Noodles</button>
+    <button class="button" data-option='doughnuts'>Doughnuts</button>
+
+    <button class="button" data-option='coffee'>Coffee</button>
+
+     <button class="button" data-option='cake'>Cake</button>
+
+    <section id='results'> </section>
 
 
 
     <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
     <script>
       $(document).ready(function(){
-        var url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=51.523102,-0.087393&radius=1000'
+        var base_url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=51.523102,-0.087393&radius=1000'
 
 // we collect data via this URI
 
-        $('#burger').on('click',function(){
-          url += '&query=burger'
+        $('button').on('click',function(){
+          var url = base_url + '&query=' + $(this).data('option');
 
 //Adds an extra search function onto the end of the API
 
           $.get(url, function(data){
-//Taking the data that URI generates - why the 0?
+//Taking the data that URI generates
             var results = data.response.groups[0].items;
-            console.log(results);
-            results.forEach(function(element, index, _){
+            results = results.sort(function(a,b){
+              return b.venue.rating - a.venue.rating;
+            })
+            $('#results').html('');
+            console.log('hello!');
+
+            results.forEach(function(element, _, _){
 
 // iterate over each object found - saving each one as a venue
               var venue = element.venue;
 
 // take each of the elements attributes listed and display in the results section
-              $("<article>"+ "<h1>"+venue.name+ "</h1>"+' '+ "<p id='rating'>"+venue.rating+'</p>'+"<h4>"+"Cost: "+venue.price.message+"</h4>"+"<p>"+' '+"<p>"+ venue.location.distance+" " + "meters away"+"</p>"+venue.location.formattedAddress[0]+' - '+ venue.location.formattedAddress[3]+"</p>"+"</article>").appendTo('#results').sort('#rating');
+              if(venue.price && venue.rating) {
+                $("<article>"+ "<h1>"+venue.name+ "</h1>"+' '+ "<p id='rating'>"+venue.rating+'</p>'+"<h4>"+"Cost: "+venue.price.message+"</h4>"+"<p>"+' '+"<p>"+ venue.location.distance+" " + "meters away"+"</p>"+venue.location.formattedAddress[0]+' - '+ venue.location.formattedAddress[3]+"</p>"+"<img >"+"</article>").appendTo('#results').sort('#rating');
+              }
             });
 
           });
 
         });
-
-        $('#sushi').on('click',function(){
-          url += '&query=sushi'
-
-//linking the sushi button to the URl
-
-          $.get(url, function(data){
-            var results = data.response.groups[0].items;
-            console.log(results);
-            results.forEach(function(element, index, _){
-              $("<article>"+element.venue.name+' '+element.venue.price.message+' '+element.venue.rating+' '+element.venue.location.formattedAddress[0]+' '+element.venue.location.formattedAddress[3]+' '+"</article>").appendTo('#results')
-            });
-
-          });
-
-        });
-
-
 
       });
     </script>
