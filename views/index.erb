@@ -32,8 +32,9 @@
 
        <button class="button" data-option='cake'>Cake</button>
   </header>
+  <section id='map'> </section>
     <section id='results'> </section>
-    <section id='map'> </section>
+
 
 
 
@@ -64,7 +65,7 @@
 
 //Adds an extra search function onto the end of the API
 
-
+          map.removeMarkers();
           $.get(url, function(data){
 
 
@@ -91,7 +92,7 @@
                     lng: venue.location.lng,
                     title: venue.name,
                     infoWindow: {
-                      content: venue.name +" "+venue.rating+" "+venue.price.message
+                      content: venue.name +": "+venue.rating+" Cost -"+venue.price.message
                     }
                   });
 
