@@ -1,6 +1,5 @@
 (function(){
     var map;
-    var marker;
     var currentLocation;
     function getLocation(){
       navigator.geolocation.getCurrentPosition(function(position){
@@ -22,19 +21,24 @@
 
   getLocation();
 
+  $('#map_button').on('click',function(){
+    $('#results').css('display','none');
+    $('#map').css('left','0px');
+  });
 
+   $('#list_button').on('click',function(){
+    $('#results').css('display','block');
+    $('#map').css('left','-10000px');
+  });
 
-
-// we collect data via this URI
-
-  $('button').on('click',function(){
+  $('.button').on('click',function(){
       var base_url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=' + currentLocation.latitude+','+ currentLocation.longitude +'&radius=1000'
     var option = $(this).data('option');
     var url = base_url + '&query=' + option;
 
-//Adds an extra search function onto the end of the API
 
     map.removeMarkers();
+
     map.addMarker({
       lat: currentLocation.latitude,
       lng: currentLocation.longitude,
@@ -43,7 +47,6 @@
     $.get(url, function(data){
 
 
-//Taking the data that URI generates
       var results = data.response.groups[0].items;
       results = results.sort(function(a,b){
         return a.venue.rating - b.venue.rating;
@@ -53,9 +56,8 @@
 
       results.forEach(function(element){
 
-// iterate over each object found - saving each one as a venue
         var venue = element.venue;
-// take each of the elements attributes listed and display in the results section
+
         if(venue.price && venue.rating) {
           var newProfile = Mustache.render($('#profile_template').html(), venue);
 

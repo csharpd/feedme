@@ -1,21 +1,27 @@
 body {
-   margin-top: 155px;
+   margin-top: 190px;
    font-family: 'Raleway', sans-serif;
 }
 
 #map{
   z-index: 0;
   display: block;
-  width: 95%;
-  height: 350px;
+  width: 100%;
+  height: 500px;
   margin: 0 auto;
   -moz-box-shadow: 0px 5px 20px #ccc;
   -webkit-box-shadow: 0px 5px 20px #ccc;
   box-shadow: 0px 5px 20px #ccc;
+  position: absolute;
+  left: -10000px;
 }
 
 #pin{
   size: 30%;
+}
+
+#result{
+  display: block;
 }
 
 html {
@@ -34,7 +40,7 @@ header {
   z-index: 1;
 }
 
-.button {
+button {
   display: inline-block;
   width: 110px;
   cursor: pointer;
