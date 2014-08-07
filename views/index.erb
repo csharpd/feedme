@@ -33,15 +33,27 @@
        <button class="button" data-option='cake'>Cake</button>
   </header>
     <section id='results'> </section>
+    <section id='map'> </section>
+
+
 
 
 
     <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
     <script src='/js/mustache.js'></script>
+    <script src=" http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src='/js/gmaps.js'></script>
 
 
     <script>
+    var map;
       $(document).ready(function(){
+          map = new GMaps({
+                    div: '#map',
+                    lat: 51.523102,
+                    lng: -0.087393,
+                  });
+
         var base_url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=51.523102,-0.087393&radius=1000'
 
 // we collect data via this URI
@@ -51,9 +63,6 @@
           var url = base_url + '&query=' + option;
 
 //Adds an extra search function onto the end of the API
-
-
-
 
 
           $.get(url, function(data){
@@ -75,6 +84,17 @@
               if(venue.price && venue.rating) {
                 var newProfile = Mustache.render($('#profile_template').html(), venue);
 
+                  console.log(venue);
+
+                  map.addMarker({
+                    lat: venue.location.lat,
+                    lng: venue.location.lng,
+                    title: venue.name,
+                    infoWindow: {
+                      content: venue.name +" "+venue.rating+" "+venue.price.message
+                    }
+                  });
+
              $(newProfile).prependTo('#results');
               };
 
@@ -85,6 +105,13 @@
         });
 
       });
+
+
+
+
+
+
     </script>
+
   </body>
 </html>
