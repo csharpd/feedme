@@ -32,7 +32,7 @@
 
        <button class="button" data-option='cake'>Cake</button>
   </header>
-  <section id='map'> </section>
+    <section id='map'> </section>
     <section id='results'> </section>
 
 
@@ -46,73 +46,7 @@
     <script src='/js/gmaps.js'></script>
 
 
-    <script>
-    var map;
-      $(document).ready(function(){
-          map = new GMaps({
-                    div: '#map',
-                    lat: 51.523102,
-                    lng: -0.087393,
-                  });
-
-        var base_url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=51.523102,-0.087393&radius=1000'
-
-// we collect data via this URI
-
-        $('button').on('click',function(){
-          var option = $(this).data('option');
-          var url = base_url + '&query=' + option;
-
-//Adds an extra search function onto the end of the API
-
-          map.removeMarkers();
-          $.get(url, function(data){
-
-
-//Taking the data that URI generates
-            var results = data.response.groups[0].items;
-            results = results.sort(function(a,b){
-              return a.venue.rating - b.venue.rating;
-            })
-            $('html').css('background-image',"url('/images/"+option+".jpg')");
-            $('#results').html('');
-
-            results.forEach(function(element, _, _){
-
-// iterate over each object found - saving each one as a venue
-              var venue = element.venue;
-// take each of the elements attributes listed and display in the results section
-              if(venue.price && venue.rating) {
-                var newProfile = Mustache.render($('#profile_template').html(), venue);
-
-                  console.log(venue);
-
-                  map.addMarker({
-                    lat: venue.location.lat,
-                    lng: venue.location.lng,
-                    title: venue.name,
-                    infoWindow: {
-                      content: venue.name +": "+venue.rating+" Cost -"+venue.price.message
-                    }
-                  });
-
-             $(newProfile).prependTo('#results');
-              };
-
-            });
-
-          });
-
-        });
-
-      });
-
-
-
-
-
-
-    </script>
+    <script src='js/lunch_me.js'></script>
 
   </body>
 </html>
