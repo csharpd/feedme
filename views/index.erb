@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Lunch-Me</title>
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
      <link href='/css/lunch.css' rel='stylesheet'>
       <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
+
   <body>
+  <template id='profile_template'>
+      <article>
+        <h1>{{name}}</h1>
+        <p id='rating'>{{rating}}</p>
+        <h4>Cost: {{price.message}}</h4>
+        <p>{{location.distance}} meters away</p>
+        <p>{{location.formattedAddress.0}} </p>
+        <p>{{location.formattedAddress.3}}</p>
+      </article>"
+  </template>
+
     <header>
       <h1 id="main">Hungry Old Street?</h1>
       <button class="button" data-option='burgers'>Burgers</button>
@@ -24,6 +37,9 @@
 
 
     <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script src='/js/mustache.js'></script>
+
+
     <script>
       $(document).ready(function(){
         var base_url ='https://api.foursquare.com/v2/venues/explore?client_id=J0IWD3NBN2YKHAI5U1GA1S1PJ5WPZYTPX5DSYKOLLC5QCSWO&client_secret=UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB&v=20130815&ll=51.523102,-0.087393&radius=1000'
@@ -36,11 +52,17 @@
 
 //Adds an extra search function onto the end of the API
 
+
+
+
+
           $.get(url, function(data){
+
+
 //Taking the data that URI generates
             var results = data.response.groups[0].items;
             results = results.sort(function(a,b){
-              return b.venue.rating - a.venue.rating;
+              return a.venue.rating - b.venue.rating;
             })
             $('html').css('background-image',"url('/images/"+option+".jpg')");
             $('#results').html('');
@@ -49,11 +71,13 @@
 
 // iterate over each object found - saving each one as a venue
               var venue = element.venue;
-
 // take each of the elements attributes listed and display in the results section
               if(venue.price && venue.rating) {
-                $("<article>"+ "<h1>"+venue.name+ "</h1>"+' '+ "<p id='rating'>"+venue.rating+'</p>'+"<h4>"+"Cost: "+venue.price.message+"</h4>"+"<p>"+' '+"<p>"+ venue.location.distance+" " + "meters away"+"</p>"+venue.location.formattedAddress[0]+' - '+ venue.location.formattedAddress[3]+"</p>"+"<img >"+"</article>").appendTo('#results');
-              }
+                var newProfile = Mustache.render($('#profile_template').html(), venue);
+
+             $(newProfile).prependTo('#results');
+              };
+
             });
 
           });
