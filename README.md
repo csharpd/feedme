@@ -6,6 +6,8 @@ Try our app!
 
 [Lunch Me](http://hungry-oldstreet.herokuapp.com/)
 
+![](public/images/lunchmescreenshot.png)
+
 ## Objectives
 Learning how to make API calls to the [Foursquare API](https://developer.foursquare.com/start) using JQuery and Ajax. With the data returned in JSON we used a Mustache template to render the results and then attached it to the DOM.
 
