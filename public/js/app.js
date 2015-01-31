@@ -2,7 +2,7 @@ var categories = [
   {name: 'Burgers', query: 'burger'},
   {name: 'Sushi', query: 'sushi'},
   {name: 'Beer', query: 'beer'},
-  {name: 'Noodles', query: 'noddles'},
+  {name: 'Noodles', query: 'noodles'},
   {name: 'Doughnuts', query: 'doughnuts'},
   {name: 'Coffee', query: 'coffee'},
   {name: 'Cake', query: 'cake'},
@@ -17,44 +17,23 @@ var categories = [
 getLocation();
 renderCategories(categories);
 
-$('.button').on('click',function(){
-  map.removeMarkers();
-
-  map.addMarker({
-    lat: currentLocation.latitude,
-    lng: currentLocation.longitude,
-    icon: 'images/zombie_walk.gif'
+$('.button').on('click',function() {
+  clearMap();
+  clearResults();
+  mapMyLocation();
+  searchForVenues(sortByRating, function(venues) {
+    _.chain(venues)
+      .each(placeOnMap)
+      .each(addToList)
   });
-  
-  $.get(buildUrl(), function(data){
-    var results = data.response.groups[0].items;
-    results = results.sort(function(a,b){
-      return a.venue.rating - b.venue.rating;
-    })
-    // $('html').css('background-image',"url('/images/"+option+".jpg')");
-    $('#results').html('');
+});
 
-    results.forEach(function(element){
+$('#map_button').on('click',function(){
+  $('#results').css('display','none');
+  $('#map').css('left','0px');
+});
 
-      var venue = element.venue;
-
-      if(venue.price && venue.rating) {
-        var newProfile = Mustache.render($('#profile_template').html(), venue);
-
-        map.addMarker({
-          lat: venue.location.lat,
-          lng: venue.location.lng,
-          title: venue.name,
-          infoWindow: {
-            content: venue.name +": "+venue.rating+" Cost -"+venue.price.message
-          }
-        });
-
-        $(newProfile).prependTo('#results');
-      };
-
-    });
-
-  });
-
+$('#list_button').on('click',function(){
+  $('#results').css('display','block');
+  $('#map').css('left','-10000px');
 });
