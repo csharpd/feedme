@@ -4,12 +4,35 @@
   <head>
     <title>Lunch-Me</title>
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
-     <link href='/css/lunch.css' rel='stylesheet'>
+     <!-- <link href='/css/lunch.css' rel='stylesheet'> -->
       <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
-  <template id='profile_template'>
+    <header>
+      <h1>Lunch-Me!</h1>
+    </header>
+    <section>
+      <aside>
+        <nav>
+          <ul><!-- button category template rendered here--></ul>
+        </nav>
+      </aside>
+      <section id='map'> </section>
+      <section id='results'> </section>
+    </section>
+    <footer>
+      <button data-option='list' id="list_button">List</button>
+      <button data-option='map' id="map_button">Map</button>
+    </footer>
+
+    <script src='//code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script src='/js/mustache.js'></script>
+    <script src="//maps.google.com/maps/api/js?sensor=true"></script>
+    <script src='/js/gmaps.js'></script>
+
+
+    <template id='profile_template'>
       <article>
         <h1>{{name}}</h1>
         <p id='rating'>{{rating}}</p>
@@ -18,44 +41,35 @@
         <p>{{location.formattedAddress.0}} </p>
         <p>{{location.formattedAddress.3}}</p>
       </article>"
-  </template>
-
-    <header>
-
-
-      <button class="button" data-option='burgers'>Burgers</button>
-      <button class="button" data-option='sushi'>Sushi</button>
-      <button class="button" data-option='beer'>Beer</button>
-      <button class="button" data-option='noodles'>Noodles</button>
-      <button class="button" data-option='doughnuts'>Doughnuts</button>
-      <button class="button" data-option='coffee'>Coffee</button>
-      <button class="button" data-option='cake'>Cake</button>
-      <button class="button" data-option='vegan'>Vegan</button>
-      <button class="button" data-option='vegetarian'>Veggie</button>
-      <button class="button" data-option='gluten+free'>Gluten Free</button>
-      <button class="button" data-option='indian'>Indian</button>
-      <button class="button" data-option='ice+cream'>Ice Cream</button>
-        <h1 id="main">Lunch-Me!</h1>
-
-
-       <button data-option='list' id="list_button">List</button>
-
-      <button data-option='map' id="map_button">Map</button>
-  </header>
-    <section id='map'> </section>
-    <section id='results'> </section>
-
-
-
-
-
-
-    <script src='//code.jquery.com/jquery-2.0.3.min.js'></script>
-    <script src='/js/mustache.js'></script>
-    <script src="//maps.google.com/maps/api/js?sensor=true"></script>
-    <script src='/js/gmaps.js'></script>
-
+    </template>
+    <template id='categories'>
+      {{#categories}}
+        <li>
+          <a href='#' class="button" data-option='{{query}}'>{{name}}</a>
+        </li>
+      {{/categories}}
+    </template>
+    <script>
+      var categories = [
+        {name: 'Burgers', query: 'burger'},
+        {name: 'Sushi', query: 'sushi'},
+        {name: 'Beer', query: 'beer'},
+        {name: 'Noodles', query: 'noddles'},
+        {name: 'Doughnuts', query: 'doughnuts'},
+        {name: 'Coffee', query: 'coffee'},
+        {name: 'Cake', query: 'cake'},
+        {name: 'Vegan', query: 'vegan'},
+        {name: 'Veggie', query: 'vegetarian'},
+        {name: 'Gluten Free', query: 'gluten+free'},
+        {name: 'Indian', query: 'indian'},
+        {name: 'Ice Cream', query: 'ice+cream'},
+        {name: 'Cocktails', query: 'cocktails'}
+      ];
+      var category_template = $('#categories').html();
+      var rendered_categories = Mustache.render(category_template,
+                                                    { categories: categories });
+      $('section aside nav ul').html(rendered_categories);
+    </script>
     <script src='/js/lunch_me.js'></script>
-
   </body>
 </html>
