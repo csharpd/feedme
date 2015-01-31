@@ -21,6 +21,7 @@ $('.button').on('click',function() {
   clearMap();
   clearResults();
   mapMyLocation();
+  changeBackground();
   searchForVenues(sortByRating, function(venues) {
     _.chain(venues)
       .each(placeOnMap)

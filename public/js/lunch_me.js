@@ -20,7 +20,6 @@ window.getLocation = function() {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
       icon: 'images/zombie_walk.gif'
-      // icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png'
     });
       currentLocation = position.coords;
   });
@@ -120,4 +119,13 @@ function elementToVenue(element) {
 
 function hasPriceAndRating(venue) {
   return venue.price && venue.rating;
+}
+
+function cleanImageName(name) {
+  return name.replace('+', '_');
+}
+
+window.changeBackground = function() {
+  name = cleanImageName($(event.target).data('query'));
+  $('html').css('background-image',"url('/images/" + name + ".jpg')");
 }
