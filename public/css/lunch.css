@@ -5,8 +5,9 @@ body {
 }
 
 html {
-  background: center center fixed;
-  background-image: url('/images/cat.jpg')
+  background: whitesmoke;
+  /*background: center center fixed;
+  background-image: url('/images/cat.jpg')*/
 }
 
 #navigation {
@@ -19,7 +20,8 @@ html {
   text-align: center;
 }
 #navigation img {
-  max-width: 100%;
+  max-width: 80%;
+  padding: .4em;
 }
 #navigation li {
   padding-top: .4em;
@@ -32,11 +34,13 @@ html {
 
 #navigation li:hover a {
   color: white;
+  font-weight: 500;
 }
 
 #navigation a {
   font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
+  font-weight: 300;
+  font-size: 1.2em;
 
   text-decoration: none;
   text-transform: uppercase;
@@ -105,10 +109,10 @@ article {
 }
 
 article h1 {
-  font-weight: 800;
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.4em;
-
   text-align: center;
+  font-weight: 400px;
 }
 
 article h1 a {
@@ -122,18 +126,21 @@ article h1 a {
 }
 
 article h1 a:hover {
-  background: grey;
+  background: #bdc3c7;
   color: white;
 }
 
 article p {
-  margin-top: .4em;
+  margin-top: 0.7em;
   margin-left: .4em;
   text-align: center;
+  text-transform: lowercase;
+  /*color: grey;*/
+  font-weight: 100;
 }
 
 article address {
-  margin-top: 2em;
+  margin-top: 1em;
   margin-left: .4em;
 
   font-size: .6em;
@@ -147,20 +154,20 @@ article address a {
   text-decoration: none;
   text-transform: none;
   color: grey;
-
-
 }
 
 article address a:hover {
   color: black;
   text-decoration: underline;
 }
+
 article footer {
   margin-top: -1em;
   margin-left: .4em;
   font-size: .6em;
   font-weight: 200;
   text-align: right;
+  color: grey;
 }
 
 //gmaps styling
