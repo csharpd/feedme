@@ -6,8 +6,8 @@ body {
 
 html {
   background: whitesmoke;
-  /*background: center center fixed;
-  background-image: url('/images/cat.jpg')*/
+  background: center center fixed;
+  background-image: url('/images/cat.jpg')
 }
 
 #navigation {
@@ -20,7 +20,7 @@ html {
   text-align: center;
 }
 #navigation img {
-  max-width: 80%;
+  max-width: 70%;
   padding: .4em;
 }
 #navigation li {

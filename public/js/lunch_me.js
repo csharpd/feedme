@@ -127,5 +127,5 @@ function cleanImageName(name) {
 
 window.changeBackground = function() {
   name = cleanImageName($(event.target).data('query'));
-  // $('html').css('background-image',"url('/images/" + name + ".jpg')");
+  $('html').css('background-image',"url('/images/" + name + ".jpg')");
 }
