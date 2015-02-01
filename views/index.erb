@@ -29,13 +29,14 @@
     </footer>
     <template id='profile_template'>
       <article>
-        <h1>{{name}}</h1>
-        <p id='rating'>{{rating}}</p>
-        <h4>Cost: {{price.message}}</h4>
-        <p>{{location.distance}} meters away</p>
-        <p>{{location.formattedAddress.0}} </p>
-        <p>{{location.formattedAddress.3}}</p>
-      </article>"
+        <h1><a href="{{url}}" target="_blank">{{venue.name}}</a></h1>
+        <p>{{venue.price.message}} | {{venue.location.distance}}m from you | average rating: {{venue.rating}}</p>
+        <address>
+          <a target="_blank" href="http://citymapper.com/directions?startcoord={{currentLocation.latitude}},{{currentLocation.longitude}}&startname=Current+Location&startaddress=Current+Location&endcoord={{venue.location.lat}},{{venue.location.lng}}&endname={{venue.name}}&endaddress={{venue.location.address}}%20({{venue.location.crossStreet}})
+          ">{{venue.location.address}} {{venue.location.postalCode}}</a>&nbsp;&nbsp;<a href="citymapper://directions?startcoord={{currentLocation.latitude}},{{currentLocation.longitude}}&startname=Current+Location&startaddress=Current+Location&endcoord={{venue.location.lat}},{{venue.location.lng}}&endname={{venue.name}}&endaddress={{venue.location.address}}%20({{venue.location.crossStreet}})
+          "><img src="/images/citymapper.png"></a></address>
+        <footer>{{venue.hours.status}}</footer>
+      </article>
     </template>
     <template id='categories'>
       {{#categories}}

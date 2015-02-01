@@ -44,6 +44,9 @@ html {
 }
 
 #navigation footer {
+  position: absolute;
+  bottom: .4em;
+  left: 0;
   padding-top: 1.8em;
   padding-left: 1em;
   padding-right: 1em;
@@ -92,8 +95,72 @@ article {
     padding: 10px;
     border-radius: 7px;
     width: 60%;
+    min-width: 350px;
     margin-right: auto;
     margin-left: auto;
+    padding: 1em;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 1.4em;
+    font-weight: 200;
+}
+
+article h1 {
+  font-weight: 800;
+  font-size: 1.4em;
+
+  text-align: center;
+}
+
+article h1 a {
+  padding: .1em;
+  padding-left: 0;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: grey;
+}
+
+article h1 a:hover {
+  background: grey;
+  color: white;
+}
+
+article p {
+  margin-top: .4em;
+  margin-left: .4em;
+  text-align: center;
+}
+
+article address {
+  margin-top: 2em;
+  margin-left: .4em;
+
+  font-size: .6em;
+  font-weight: 200;
+}
+
+article address a {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+
+  text-decoration: none;
+  text-transform: none;
+  color: grey;
+
+
+}
+
+article address a:hover {
+  color: black;
+  text-decoration: underline;
+}
+article footer {
+  margin-top: -1em;
+  margin-left: .4em;
+  font-size: .6em;
+  font-weight: 200;
+  text-align: right;
 }
 
 //gmaps styling

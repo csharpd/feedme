@@ -108,12 +108,13 @@ window.clearResults = function() {
 window.addToList = function(element) {
   var venue = elementToVenue(element);
   if(hasPriceAndRating(venue)) {
-    var result = Mustache.render($('#profile_template').html(), venue);
+    var result = Mustache.render($('#profile_template').html(), {venue: venue, currentLocation: window.currentLocation});
     $(result).prependTo('#results');
   }
 }
 
 function elementToVenue(element) {
+  console.log(element);
   return element.venue;
 }
 
