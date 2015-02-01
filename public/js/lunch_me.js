@@ -114,7 +114,6 @@ window.addToList = function(element) {
 }
 
 function elementToVenue(element) {
-  console.log(element);
   return element.venue;
 }
 

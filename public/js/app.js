@@ -1,17 +1,17 @@
 var categories = [
-  {name: 'Burgers', query: 'burger'},
-  {name: 'Sushi', query: 'sushi'},
-  {name: 'Beer', query: 'beer'},
   {name: 'Noodles', query: 'noodles'},
-  {name: 'Doughnuts', query: 'doughnuts'},
-  {name: 'Coffee', query: 'coffee'},
-  {name: 'Cake', query: 'cake'},
-  {name: 'Vegan', query: 'vegan'},
-  {name: 'Veggie', query: 'vegetarian'},
-  {name: 'Gluten Free', query: 'gluten+free'},
+  {name: 'Sushi', query: 'sushi'},
   {name: 'Indian', query: 'indian'},
+  {name: 'Burgers', query: 'burger'},
+  {name: 'Beer', query: 'beer'},
+  {name: 'Doughnuts', query: 'doughnuts'},
   {name: 'Ice Cream', query: 'ice+cream'},
-  {name: 'Cocktails', query: 'cocktails'}
+  {name: 'Cocktails', query: 'cocktails'},
+  {name: 'Vegetarian', query: 'vegetarian'},
+  {name: 'Gluten Free', query: 'gluten+free'},
+  {name: 'Vegan', query: 'vegan'},
+  {name: 'Cake', query: 'cake'},
+  {name: 'Coffee', query: 'coffee'}
 ];
 
 getLocation();

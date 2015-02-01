@@ -18,7 +18,7 @@
           <ul><!-- button category template rendered here--></ul>
         </nav>
         <footer>
-          Created by <a href="https://twitter.com/chloe_does">Chloe Do.es</a> &
+          Made by <a href="https://twitter.com/chloe_does">Chloe Do.es</a> &
           <a href="https://twitter.com/ecomba">Mr Ripenhausen</a>
         </footer>
       </aside>
@@ -29,7 +29,14 @@
     </footer>
     <template id='profile_template'>
       <article>
-        <h1><a href="{{url}}" target="_blank">{{venue.name}}</a></h1>
+        <span>
+          <a target="_blank" href="https://twitter.com/share?text=I%20am%20going%20to%20@{{{venue.name}}}%20-%20{{venue.location.address}}&hashtags=feedme&via=chloe_does%20%26%20@ecomba"><img src="/images/twitter-big.png"/></a>
+        </span>
+        <h1>
+          <a href="{{venue.url}}" target="_blank">{{venue.name}}</a>
+        </h1>
+        <p>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
         <p>{{venue.price.message}} | {{venue.location.distance}}m from you | average rating: {{venue.rating}}</p>
         <address>
           <a target="_blank" href="http://citymapper.com/directions?startcoord={{currentLocation.latitude}},{{currentLocation.longitude}}&startname=Current+Location&startaddress=Current+Location&endcoord={{venue.location.lat}},{{venue.location.lng}}&endname={{venue.name}}&endaddress={{venue.location.address}}%20({{venue.location.crossStreet}})
