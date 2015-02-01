@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
 body {
    font-family: 'Raleway', sans-serif;
 }
@@ -8,12 +10,54 @@ html {
 }
 
 #navigation {
-  background-color: #bdc3c7;
+  background-color: white;
   position: fixed;
   top: 0%;
-  width: 400px;
+  width: 20%;
+  min-width: 10em;
   height: 100%;
   text-align: center;
+}
+#navigation img {
+  max-width: 100%;
+}
+#navigation li {
+  padding-top: .4em;
+  padding-bottom: .4em;
+}
+
+#navigation li:hover {
+  background: #bdc3c7;
+}
+
+#navigation li:hover a {
+  color: white;
+}
+
+#navigation a {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  color: grey;
+}
+
+#navigation footer {
+  padding-top: 1.8em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: .7em;
+  text-align: center;
+}
+
+#navigation footer a {
+  text-transform: none;
+}
+
+#navigation footer a:hover {
+  color: black;
+  text-decoration: underline;
 }
 
 button {
@@ -34,6 +78,11 @@ button {
   margin-bottom: 10px;
 
   text-shadow: 0 0 2px rgba(0,0,0, 0.4);
+}
+
+#results {
+  margin-left: 10em;
+  min-width: 10em;
 }
 
 article {
