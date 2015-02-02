@@ -8,9 +8,25 @@ var apiVersion = 20130815;
 window.map;
 window.currentLocation;
 
+// Handlebars...
+//
 // templates
 var categories_source = $('#categories').html();
 var profile_source = $('#profile_template').html();
+
+Handlebars.registerHelper('stars', function(rating) {
+  stars = parseInt(rating);
+  halfStar = parseFloat(rating) - stars > 0;
+  console.log(stars);
+  console.log(halfStar);
+  total =  _.times(stars, function(n) {
+      return '<i class="fa fa-star"></i>';
+  }).toString().replace(/,/g,'');
+  if(halfStar == true) {
+    total += '<i class="fa fa-star-half"></i>';
+  }
+  return total + ' (average rating: ' + rating + ')';
+});
 
 // Map
 window.getLocation = function() {

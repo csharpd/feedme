@@ -3,9 +3,11 @@
 
   <head>
     <title>Feed Me London</title>
+
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
-     <link href='/css/lunch.css' rel='stylesheet'>
-      <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='/css/lunch.css' rel='stylesheet'>
+    <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
@@ -44,7 +46,7 @@
         </h1>
         <p>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
-        <p>{{venue.price.message}} | {{venue.location.distance}}m from you | average rating: {{venue.rating}}</p>
+        <p>{{venue.price.message}} | {{venue.location.distance}}m from you | <small>{{{stars venue.rating}}}</small></p>
         <address>
           <a target="_blank" href="http://citymapper.com/directions?startcoord={{currentLocation.latitude}},{{currentLocation.longitude}}&startname=Current+Location&startaddress=Current+Location&endcoord={{venue.location.lat}},{{venue.location.lng}}&endname={{venue.name}}&endaddress={{venue.location.address}}%20({{venue.location.crossStreet}})
           ">{{venue.location.address}} {{venue.location.postalCode}}</a>&nbsp;&nbsp;<a href="citymapper://directions?startcoord={{currentLocation.latitude}},{{currentLocation.longitude}}&startname=Current+Location&startaddress=Current+Location&endcoord={{venue.location.lat}},{{venue.location.lng}}&endname={{venue.name}}&endaddress={{venue.location.address}}%20({{venue.location.crossStreet}})
