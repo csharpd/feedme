@@ -26,6 +26,15 @@ Handlebars.registerHelper('stars', function(rating) {
   return stars + ' (average rating: ' + rating + ')';
 });
 
+Handlebars.registerHelper('price', function(price) {
+  pricing = { Cheap: 1, Moderate: 2, Expensive: 3, 'Very Expensive': 4 }
+  console.log(price);
+  console.log(pricing[price]);
+  return _.times(pricing[price], function(n) {
+    return '<i class="fa fa-gbp"></i>'; 
+  }).toString().replace(/,/g,'') + ' (' + price + ')';
+});
+
 // Map
 window.getLocation = function() {
   navigator.geolocation.getCurrentPosition(function(position) {
