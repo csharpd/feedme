@@ -126,8 +126,8 @@ article h1 a {
 }
 
 article h1 a:hover {
-  background: #bdc3c7;
-  color: white;
+  color: black;
+  text-decoration: underline;
 }
 
 article span {
