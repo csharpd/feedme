@@ -37,6 +37,11 @@ html {
   font-weight: 500;
 }
 
+.active {
+  font-weight: 500;
+  background: #bdc3c7;
+}
+
 #navigation a {
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;

@@ -73,8 +73,12 @@ function version(apiVersion) {
   return '&v=' + apiVersion;
 }
 
+window.selectedCategory = function() {
+  return $(event.target).data('query');
+}
+
 window.buildUrl = function() {
-  var query = '&query=' + $(event.target).data('query');
+  var query = '&query=' + selectedCategory();
   var url = foursquareApiBaseUrl + credentials() + version(apiVersion) + locationAsString() +
             radius(distance) + query;
   return url;

@@ -47,7 +47,7 @@
     </template>
     <template id='categories' type="text/x-handlebars-template">
       {{#categories}}
-        <li class="button" data-query='{{query}}'>
+        <li class="button" data-query='{{query}}' id={{query}}>
           <a href='#' data-query='{{query}}'>{{name}}</a>
         </li>
       {{/categories}}

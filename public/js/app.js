@@ -17,11 +17,17 @@ var categories = [
 getLocation();
 renderCategories(categories);
 
+function highlightCategory() {
+  $('#navigation li').removeClass('active');
+  $('#'+selectedCategory()).addClass('active');
+}
+
 $('.button').on('click',function() {
   clearMap();
   clearResults();
   mapMyLocation();
   changeBackground();
+  highlightCategory();
   searchForVenues(sortByRating, function(venues) {
     _.chain(venues)
       .each(placeOnMap)
