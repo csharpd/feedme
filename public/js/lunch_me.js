@@ -122,6 +122,7 @@ function hasPriceAndRating(venue) {
 }
 
 function cleanImageName(name) {
+  console.log(name);
   return name.replace('+', '_');
 }
 
