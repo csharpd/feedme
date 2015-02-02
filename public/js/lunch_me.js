@@ -17,8 +17,6 @@ var profile_source = $('#profile_template').html();
 Handlebars.registerHelper('stars', function(rating) {
   stars = parseInt(rating);
   halfStar = parseFloat(rating) - stars > 0;
-  console.log(stars);
-  console.log(halfStar);
   total =  _.times(stars, function(n) {
       return '<i class="fa fa-star"></i>';
   }).toString().replace(/,/g,'');
