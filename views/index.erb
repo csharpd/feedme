@@ -27,7 +27,7 @@
     </section>
     <footer>
     </footer>
-    <template id='profile_template'>
+    <template id='profile_template' type="text/x-handlebars-template">
       <article>
         <span>
           <a target="_blank" href="https://twitter.com/share?text=I%20am%20going%20to%20@{{{venue.name}}}%20-%20{{venue.location.address}}&hashtags=feedme&via=chloe_does%20%26%20@ecomba"><img src="/images/twitter-big.png"/></a>
@@ -45,7 +45,7 @@
         <footer>{{venue.hours.status}}</footer>
       </article>
     </template>
-    <template id='categories'>
+    <template id='categories' type="text/x-handlebars-template">
       {{#categories}}
         <li class="button" data-query='{{query}}'>
           <a href='#' data-query='{{query}}'>{{name}}</a>
@@ -53,8 +53,8 @@
       {{/categories}}
     </template>
     <script src='//code.jquery.com/jquery-2.0.3.min.js'></script>
-    <script src='/js/mustache.js'></script>
     <script src='/js/underscore.js'></script>
+    <script src='/js/handlebars.js'></script>
     <script src="//maps.google.com/maps/api/js?sensor=true"></script>
     <script src='/js/gmaps.js'></script>
     <script src='/js/lunch_me.js'></script>

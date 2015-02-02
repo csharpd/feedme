@@ -8,6 +8,10 @@ var apiVersion = 20130815;
 window.map;
 window.currentLocation;
 
+// templates
+var categories_source = $('#categories').html();
+var profile_source = $('#profile_template').html();
+
 // Map
 window.getLocation = function() {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -95,10 +99,8 @@ window.searchForVenues = function(sortBy, callback) {
 
 // Multiple purpose functions
 window.renderCategories = function(categories) {
-  var category_template = $('#categories').html();
-  var rendered_categories = Mustache.render(category_template,
-  { categories: categories });
-  $('section aside nav ul').html(rendered_categories);
+  var template = Handlebars.compile(categories_source);
+  $('section aside nav ul').html(template({ categories: categories }));
 }
 
 window.clearResults = function() {
@@ -107,8 +109,9 @@ window.clearResults = function() {
 
 window.addToList = function(element) {
   var venue = elementToVenue(element);
+  var template = Handlebars.compile(profile_source);
   if(hasPriceAndRating(venue)) {
-    var result = Mustache.render($('#profile_template').html(), {venue: venue, currentLocation: window.currentLocation});
+    var result = template({venue: venue, currentLocation: window.currentLocation});
     $(result).prependTo('#results');
   }
 }
