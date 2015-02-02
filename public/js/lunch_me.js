@@ -15,8 +15,9 @@ var categories_source = $('#categories').html();
 var profile_source = $('#profile_template').html();
 
 Handlebars.registerHelper('stars', function(rating) {
-  star_rating = parseInt(rating);
-  halfStar = parseFloat(rating) - star_rating > 0;
+  half = parseFloat(rating) / 2;
+  star_rating = parseInt(half);
+  halfStar = parseFloat(half) - star_rating > 0;
   stars =  _.times(star_rating, function(n) {
       return '<i class="fa fa-star"></i>';
   }).toString().replace(/,/g,'');
@@ -28,8 +29,6 @@ Handlebars.registerHelper('stars', function(rating) {
 
 Handlebars.registerHelper('price', function(price) {
   pricing = { Cheap: 1, Moderate: 2, Expensive: 3, 'Very Expensive': 4 }
-  console.log(price);
-  console.log(pricing[price]);
   return _.times(pricing[price], function(n) {
     return '<i class="fa fa-gbp"></i>'; 
   }).toString().replace(/,/g,'') + ' (' + price + ')';
