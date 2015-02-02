@@ -39,13 +39,15 @@ body {
   height: 100%;
   text-align: center;
 }
+
 #navigation img {
   max-width: 70%;
   padding: .4em;
 }
+
 #navigation li {
-  padding-top: 0.6em;
-  padding-bottom: 0.6em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 #navigation li:hover {
@@ -81,6 +83,7 @@ body {
   padding-right: 1em;
   font-size: .7em;
   text-align: center;
+  line-height: 1.4em;
 }
 
 #navigation footer a {
