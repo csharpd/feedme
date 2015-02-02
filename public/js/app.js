@@ -23,9 +23,9 @@ function highlightCategory() {
 }
 
 $('.button').on('click',function() {
-  clearMap();
+  //clearMap();
   clearResults();
-  mapMyLocation();
+  //mapMyLocation();
   changeBackground();
   highlightCategory();
   searchForVenues(sortByRating, function(venues) {
