@@ -4,7 +4,7 @@ Lunch Me
 Don't know where to eat today?
 Try our app!
 
-[Lunch Me](http://hungry-oldstreet.herokuapp.com/)
+[Feed Me](http://www.feedme.london/)
 
 ![](public/images/lunchmescreenshot.png)
 
@@ -30,11 +30,11 @@ Take out the logic of the API calls and parsing of data into seperate Javascript
 ## How to run it
 ```sh
 git clone https://github.com/csharpd/lunch_me.git
-cd lunch-me
+cd feedme
 bundle
 rackup
 ```
 open your browser and go to [localhost:9292](http://localhost:9292)
 
-## My Awesome Pairing Partner
-[Toan](https://github.com/yoshdog)
+## My  Pairing Partner
+[ecomba](https://github.com/ecomba)
