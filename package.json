@@ -1,0 +1,22 @@
+{
+  "name": "feedme",
+  "version": "0.2.0",
+  "description": "Finding food around you",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Chloe Donegan"
+    },
+    {
+      "name": "Enrique Comba Riepenhausen"
+    }
+  ],
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register -R spec"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "coffee-script": "^1.8.0",
+    "mocha": "^1.21.5"
+  }
+}
