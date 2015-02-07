@@ -46,6 +46,7 @@ window.getLocation = function() {
       lng: currentLocation.longitude,
       icon: 'images/zombie_walk.gif'
     });
+    currentLocation = position.coords;
   });
 }
 
