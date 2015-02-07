@@ -6,7 +6,6 @@ var clientSecret = 'UFJUDAPQZUX5LDPMDHGK3XOPB4QDH5HPA13J1WTP1QPWA0SB';
 var apiVersion = 20130815;
 
 window.map;
-window.currentLocation;
 
 // Handlebars...
 //
@@ -39,15 +38,14 @@ window.getLocation = function() {
   navigator.geolocation.getCurrentPosition(function(position) {
     map = new GMaps({
       div: '#map',
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
+      lat: currentLocation.latitude,
+      lng: currentLocation.longitude,
     });
     marker = map.addMarker({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
+      lat: currentLocation.latitude,
+      lng: currentLocation.longitude,
       icon: 'images/zombie_walk.gif'
     });
-      currentLocation = position.coords;
   });
 }
 

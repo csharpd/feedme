@@ -14,7 +14,8 @@ var categories = [
   {name: 'Coffee', query: 'coffee'}
 ];
 
-getLocation();
+feedme.setCurrentLocation(navigator);
+
 renderCategories(categories);
 
 function highlightCategory() {
@@ -30,7 +31,6 @@ $('.button').on('click',function() {
   highlightCategory();
   searchForVenues(sortByRating, function(venues) {
     _.chain(venues)
-      .each(placeOnMap)
       .each(addToList)
   });
 });
