@@ -5,6 +5,10 @@
   var previousFeedme = root.feedme;
 
   var feedme = function() {
+    var currentLocation;
+    var foursquareClientId;
+    var distance;
+    var foursquareVersion;
   }
 
   feedme.noConflict = function() {
@@ -12,22 +16,92 @@
     return feedme;
   }
 
+  if(typeof exports !== 'undefined') {
+    if(typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = feedme;
+    }
+    exports.feedme = feedme;
+  } else {
+    root.feedme = feedme;
+  }
+
+  // FEED ME
+  //
+  // Configuration
+  feedme.addClientId = function(id) {
+    feedme.foursquareClientId = id;
+  };
+
+  feedme.addClientSecret = function(secret) {
+    feedme.foursquareSecret = secret;
+  };
+
+  feedme.addDistance = function(distance) {
+    feedme.distance = distance;
+  };
+
+  feedme.addFoursquareApiVersion = function(version) {
+    feedme.foursquareVersion = version;
+  };
+
+  feedme.client = function() {
+    return {id: feedme.foursquareClientId, secret: feedme.foursquareSecret};
+  };
+
+  // Geolocating the people on the site
   feedme.locate = function(navigator, callback) {
     navigator.geolocation.getCurrentPosition(callback);
   };
 
   feedme.setCurrentLocation = function(navigator) {
     this.locate(navigator, function(position) {
-      window.currentLocation = position.coords;
+      feedme.currentLocation = position.coords;
     });
   };
 
-  if(typeof exports !== 'undefined') {
-    if(typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = feedme;
-    } 
-    exports.feedme = feedme;
-  } else {
-    root.feedme = feedme;
+  // --------------------- Foursquare API ------------------------------
+
+  feedme.locationAsString = function(currentLocation) {
+    return '&ll='+ currentLocation.latitude +
+           ',' + currentLocation.longitude;
+  };
+
+  feedme.foursquareCredentials = function(client) {
+    return 'client_id=' + client.id + '&client_secret=' + client.secret;
+  };
+
+  feedme.radiusAsString = function(distance) {
+    return '&radius=' + distance;
+  };
+
+  feedme.apiVersionAsString = function(apiVersion) {
+    return '&v=' + apiVersion;
+  };
+
+  feedme.buildFoursquareApiUrl = function(category, currentLocation, client,
+      distance, apiVersion) {
+    var baseUrl = 'https://api.foursquare.com/v2/venues/explore?';
+    return baseUrl + this.foursquareCredentials(client) +
+      this.apiVersionAsString(apiVersion) + 
+      this.locationAsString(currentLocation) + 
+      this.radiusAsString(distance) + '&query=' + category;
+  }
+
+  feedme.venuesInFoursquare = function(category, callback) {
+    var url = feedme.buildFoursquareApiUrl(category, feedme.currentLocation, 
+        feedme.client(), feedme.distance, feedme.foursquareVersion);
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        var data = JSON.parse(request.responseText);
+        callback(data.response.groups[0].items, callback);
+      } else { }
+    };
+    request.onerror = function() {
+      console.log('Ops! There seems to be a problem with Foursquare');
+    };
+    request.send();
   }
 }).call(this);

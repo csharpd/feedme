@@ -6,9 +6,6 @@ sinonChai = require 'sinon-chai'
 expect = chai.expect
 chai.use(sinonChai)
 
-# This makes the window object available in our code
-global.window = this
-
 describe "Getting the location from a user", ->
   navigator = null
 
@@ -45,6 +42,6 @@ describe "Getting the location from a user", ->
       }
     }
     feedme.setCurrentLocation(navigator)
-    expect(window.currentLocation).to.equal(theLocation)
+    expect(feedme.currentLocation).to.equal(theLocation)
 
 
