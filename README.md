@@ -20,16 +20,19 @@ Take out the logic of the API calls and parsing of data into seperate Javascript
 * Javascript
 * JQuery
 * AJAX
-* {{ Mustache }}
-* GMaps
+* {{ Handlebars.js }}
+* Sinatra
+* Ruby
+* puma
+* ~~GMaps~~
 
 ## APIS
 * Foursquare
-* Google Maps
+* ~~Google Maps~~
 
 ## How to run it
 ```sh
-git clone https://github.com/csharpd/lunch_me.git
+git clone https://github.com/csharpd/feedme.git
 cd feedme
 bundle
 rackup
