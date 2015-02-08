@@ -1,4 +1,4 @@
-feedme = require '../public/js/location.js'
+feedme = require '../public/js/feedme.js'
 
 chai = require 'chai'
 sinon = require 'sinon'
