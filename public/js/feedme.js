@@ -11,10 +11,16 @@
     var foursquareVersion;
   }
 
+  // This is a precaution in case there is another
+  // library/function called feedme.
+  // If that were the case the old one would take precedence
+  // if we call noConflict().
   feedme.noConflict = function() {
     root.feedme = previousFeedme;
     return feedme;
   }
+
+  //This makes this libarary node.js and browser compatible.
 
   if(typeof exports !== 'undefined') {
     if(typeof module !== 'undefined' && module.exports) {
@@ -25,7 +31,7 @@
     root.feedme = feedme;
   }
 
-  // FEED ME
+  // FEED ME - finally!
   //
   // Configuration
   feedme.addClientId = function(id) {
@@ -82,13 +88,13 @@
       distance, apiVersion) {
     var baseUrl = 'https://api.foursquare.com/v2/venues/explore?';
     return baseUrl + this.foursquareCredentials(client) +
-      this.apiVersionAsString(apiVersion) + 
-      this.locationAsString(currentLocation) + 
+      this.apiVersionAsString(apiVersion) +
+      this.locationAsString(currentLocation) +
       this.radiusAsString(distance) + '&query=' + category;
   }
 
   feedme.venuesInFoursquare = function(category, callback) {
-    var url = feedme.buildFoursquareApiUrl(category, feedme.currentLocation, 
+    var url = feedme.buildFoursquareApiUrl(category, feedme.currentLocation,
         feedme.client(), feedme.distance, feedme.foursquareVersion);
     var request = new XMLHttpRequest();
     request.open('GET', url, true);

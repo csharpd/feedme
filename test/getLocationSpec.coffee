@@ -9,6 +9,7 @@ chai.use(sinonChai)
 describe "Getting the location from a user", ->
   navigator = null
 
+  # mocking the browser
   it 'asks the navigator for the current location', ->
     navigator = {
       geolocation: {
@@ -18,20 +19,23 @@ describe "Getting the location from a user", ->
     feedme.locate(navigator)
     expect(navigator.geolocation.getCurrentPosition).to.have.been.called
 
+  # the browser returns the position using a callback
   it 'returns the current location', ->
     emptyPosition = {}
     navigator = {
       geolocation: {
-        getCurrentPosition: (f)-> f(emptyPosition)
+        getCurrentPosition: (callback)-> callback(emptyPosition)
       }
     }
     position = null
-    callback = (pos)->
-      position = pos
+    callback = (thePosition)->
+      position = thePosition
 
     feedme.locate(navigator, callback)
     expect(position).to.equal(emptyPosition)
 
+
+  # set the users currentlocation to be the cordinates that the browser returns
   it 'sets the location', ->
     theLocation = 'LOCATION SET'
     position = { coords: theLocation }
@@ -43,5 +47,3 @@ describe "Getting the location from a user", ->
     }
     feedme.setCurrentLocation(navigator)
     expect(feedme.currentLocation).to.equal(theLocation)
-
-

@@ -46,10 +46,9 @@ describe 'Interacting with the Foursquare API', ->
     expected = '&v=v3'
     expect(feedme.apiVersionAsString(apiVersion)).to.equal(expected)
 
-  it 'builds the url to the foursquare api', ->
+  it 'builds the url for the foursquare api', ->
     expected = 'https://api.foursquare.com/v2/venues/explore?' +
       'client_id=clientId&client_secret=shhhh&v=v3&ll=HERE,THERE' +
       '&radius=1000&query=testing'
     expect(feedme.buildFoursquareApiUrl(category, currentLocation, client,
       distance, apiVersion)).to.equal(expected)
-

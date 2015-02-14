@@ -17,10 +17,11 @@ Handlebars.registerHelper('stars', function(rating) {
   return stars + ' (average rating: ' + rating + ')';
 });
 
+// price translation: £ / ££ / ££
 Handlebars.registerHelper('price', function(price) {
   pricing = { Cheap: 1, Moderate: 2, Expensive: 3, 'Very Expensive': 4 }
   return _.times(pricing[price], function(n) {
-    return '<i class="fa fa-gbp"></i>'; 
+    return '<i class="fa fa-gbp"></i>';
   }).toString().replace(/,/g,'') + ' (' + price + ')';
 });
 
@@ -37,7 +38,9 @@ var categories = [
   {name: 'Gluten Free', query: 'gluten+free'},
   {name: 'Vegan', query: 'vegan'},
   {name: 'Cake', query: 'cake'},
-  {name: 'Coffee', query: 'coffee'}
+  {name: 'Coffee', query: 'coffee'},
+  {name: 'Brunch', query: 'brunch'},
+  {name: 'Pizza', query: 'pizza'}
 ];
 
 // Setup feedme
@@ -113,4 +116,3 @@ $('#list_button').on('click',function(){
   $('#results').css('display','block');
   $('#map').css('left','-10000px');
 });
-
