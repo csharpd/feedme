@@ -92,7 +92,7 @@ function changeBackground() {
 
 feedme.setCurrentLocation(navigator);
 
-renderCategories(categories);
+renderCategories(categories.sort(feedme.compare));
 
 $('.button').on('click',function() {
   clearResults();
