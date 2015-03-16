@@ -19,6 +19,7 @@ Take out the logic of the API calls and parsing of data into seperate Javascript
 ## Tech Stack
 * Javascript
 * JQuery
+* Underscore
 * AJAX
 * {{ Handlebars.js }}
 * Sinatra
